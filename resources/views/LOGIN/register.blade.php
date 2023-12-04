@@ -43,6 +43,11 @@
                 </div>
                 <br>
                 <div class="fas fa mb-3">
+                    <label for="nitInput" class="form-label">NIT</label>
+                    <input type="text" class="form-control" id="nitInput" name="nit" required autocomplete="disable">
+                </div>
+                <br>                
+                <div class="fas fa mb-3">
                     <label for="emailInput" class="form-label">Email</label>
                     <input type="email" class="form-control" id="emailInput" name="email" required autocomplete="disable">
                 </div>

@@ -53,5 +53,9 @@ public function compras()
 {
     return $this->hasMany(Compra::class, 'user_id');
 }
+    public function cliente()
+    {
+        return $this->belongsTo(Cliente::class);
+    }
 
 }

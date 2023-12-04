@@ -33,7 +33,11 @@
     {{ session('success') }}
 </div>
 @endif
-
+@if(session('error'))
+<div class="alert alert-danger">
+    {{ session('error') }}
+</div>
+@endif
     <div class="container">
         <div class="image-container">
             <img src="{{ asset('img/image31.png') }}" alt="Imagen" class="img-fluid" >
@@ -62,6 +66,13 @@
                 </div>
                 <br>
                 <button type="submit" class="fas fa btn btn-primary" style="background-color: RGB(0 130 130); border: RGB(0 130 130); border-radius:20px">INGRESA</button>
+                <!-- Agrega esta sección para el inicio de sesión con Google -->
+                {{-- <div class="text-center">
+                    <a href="{{ route('google.redirect') }}" class="btn btn-google">
+                        <i class="fab fa-google"></i> Iniciar sesión con Google
+                    </a>
+                </div> --}}
+
             </form>
         </div>
     </div>

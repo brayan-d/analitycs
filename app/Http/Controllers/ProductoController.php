@@ -2,16 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\Product;
 use HTMLPurifier;
+use App\Models\Product;
+use App\Models\Boletine;
 use HTMLPurifier_Config;
+use App\Models\Marquesina;
 
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
 class ProductoController extends Controller
 {
-    //
+    
     public function formularioCarga()
     {
         return view('ADMIN.subir_producto');
@@ -24,7 +27,8 @@ class ProductoController extends Controller
         $product->description = $request->input('description');
         $product->contenido = $request->input('contenido');
         $product->contenido = html_entity_decode($request->input('contenido'));
-        $product->price = $request->input('price');
+        $product->minPrice = $request->input('minPrice');
+        $product->maxPrice = $request->input('maxPrice');
     
         if ($request->hasFile('image')) {
             $image = $request->file('image');
@@ -35,13 +39,15 @@ class ProductoController extends Controller
     
         $product->save();
     
-        return redirect('shop')->with('success', 'Producto subido con éxito');
+        // return redirect('shop')->with('success', 'Producto subido con éxito');
+        return redirect()->route('informe')->with('success', 'Producto subido con éxito');
+
     }
     
     public function mostrarProductos()
 {
     $productos = Product::all(); // Obtén todos los productos desde la base de datos
-    return view('ADMIN.ver_productos', ['productos' => $productos]);
+    return view('ADMIN/viewss.informe', ['productos' => $productos]);
 }
 
 public function editarProducto($id)
@@ -57,7 +63,8 @@ public function actualizarProducto(Request $request, $id)
     $producto = Product::find($id);
     $producto->name = $request->input('name');
     $producto->description = $request->input('description');
-    $producto->price = $request->input('price');
+    $producto->minPrice = $request->input('minPrice');
+    $producto->maxPrice = $request->input('maxPrice');
     $producto->contenido = html_entity_decode($request->input('contenido'));
     
 
@@ -73,7 +80,7 @@ public function actualizarProducto(Request $request, $id)
     $producto->save();
 
     // Redirige de nuevo a la lista de productos con un mensaje de éxito.
-    return redirect()->route('admin.ver-productos')->with('success', 'Producto actualizado con éxito');
+    return redirect()->route('informe')->with('success', 'Producto actualizado con éxito');
 }
 
 public function eliminarProducto($id)
@@ -83,9 +90,9 @@ public function eliminarProducto($id)
         $producto = Product::find($id);
         $producto->delete();
 
-        return redirect()->route('admin.ver-productos')->with('success', 'Producto eliminado con éxito');
+        return redirect()->route('informe')->with('success', 'Producto eliminado con éxito');
     } catch (\Exception $e) {
-        return redirect()->route('admin.ver-productos')->with('error', 'No se puede eliminar el producto debido a restricciones de clave externa.');
+        return redirect()->route('informe')->with('error', 'No se puede eliminar el producto debido a restricciones de clave externa.');
     }
 }
 

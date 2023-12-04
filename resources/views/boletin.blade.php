@@ -38,7 +38,6 @@
      @include('partials.navbar')
     
     <!-- -->
-    @include('partials.cab')
     <br>
     <br>
     <div class="col-md-6 mt-0 ">
@@ -95,7 +94,6 @@
 <br>
 <br>
 <!-- FOOTER -->
-    @include('footer.boletin')
     @include('footer.footer')
 
 

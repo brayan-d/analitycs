@@ -30,6 +30,7 @@
                 <img src="{{ asset($icono->image_icono) }}" alt="{{ $icono->image_icono }}" width="150">
             </div>
             <div class="form-group">
+                <h6 class="fas fa">300px (Ancho x Alto) </h6>
                 <label for="new_image">Nueva imagen:</label>
                 <input type="file" name="new_image" class="form-control-file">
             </div>
@@ -41,7 +42,6 @@
         </form>
     </div>
     <br>
-    @include('footer.boletin')
     <br>
     @include('footer.footer')
 </body>

@@ -27,7 +27,7 @@
             </div>
             <div class="form-group">
                 <label for="texto_contenido">Texto:</label>
-                <input type="text" name="texto_contenido" class="form-control" value="{{ $contenido->texto_contenido }}" required>
+                <textarea type="text" name="texto_contenido" class="form-control" value="{{ $contenido->texto_contenido }}" required></textarea>
             </div>
             <div class="form-group">
                 <label for="name_boton">Nombre del boton:</label>
@@ -39,6 +39,7 @@
             </div>
             <div class="form-group">
                 <label for="new_image">Nueva imagen:</label>
+                <h6 class="fas fa">500 x 500 (Ancho x Alto) </h6>
                 <input type="file" name="new_image" class="form-control-file">
             </div>
             
@@ -49,7 +50,6 @@
         </form>
     </div>
     <br>
-    @include('footer.boletin')
     <br>
     @include('footer.footer')
 </body>

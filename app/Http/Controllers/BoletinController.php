@@ -22,6 +22,13 @@ class BoletinController extends Controller
         // Redirige a la página de confirmación con un mensaje.
         return redirect()->route('boletin')->with('success', 'Formulario enviado correctamente');
     }
+    public function mostrarSubs(Request $request)
+    {
+        $fechaBusqueda = $request->input('fecha_busqueda');
+        $boletin = $fechaBusqueda ? Boletin::whereDate('created_at', $fechaBusqueda)->get() : Boletin::all(); // Obtén todos los productos desde la base de datos
+        return view('ADMIN/viewss.subs', ['boletin' => $boletin]);
+    }
+   
     public function index()
     {
         //

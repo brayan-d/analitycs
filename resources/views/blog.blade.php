@@ -18,6 +18,8 @@
     <!-- Navbar y Cabecera -->
     @include('partials.navbar')
     @include('partials.cab')
+    @extends('app')
+
     <br>
     <div class="container">
     <div class="row">
@@ -27,11 +29,12 @@
                     <img src="{{ asset($noticia->image_noticia) }}" class="card-img-top" alt="..." style="height: 200px; width: 100%; border-top-left-radius: 30px; border-top-right-radius: 30px; border-bottom-left-radius: 0; border-bottom-right-radius: 0;">
                     <div class="card-body d-flex flex-column" style="height: 100%;">
                         <h5 class="card-title">{{ $noticia->titulo_noticia }}</h5>
-                        <p class="card-text p44" style="max-height: 80px; overflow: hidden; text-overflow: ellipsis;">{{ $noticia->texto_corto }}</p>
+                        <p class="card-text p44" style="max-height: 80px; overflow: hidden; text-overflow: ellipsis;">{!! $noticia->texto_corto !!}</p>
                         <p class="card-text"><small class="text-muted">{{ $noticia->fecha_noticia }}</small></p>
-                        <button type="button" class="btn btn-primary mt-auto" data-toggle="modal" data-target="#noticiaModal{{ $noticia->id }}">
+                        {{-- <button type="button" class="btn btn-primary mt-auto" data-toggle="modal" data-target="#noticiaModal{{ $noticia->id }}">
                             Leer más
-                        </button>
+                        </button> --}}
+                        <a href="{{ route('noticias.mostrar', ['id' => $noticia->id]) }}" class="btn btn-primary" style="background-color: #008282; border:#008282; ">Leer más</a>
                     </div>
                 </div>
             </div>
@@ -47,8 +50,7 @@
 
     <br>
     <br>
-    <!-- boletin -->
-    @include('footer.boletin')
+   
     <br>
     <!-- footer -->
     @include('footer.footer')

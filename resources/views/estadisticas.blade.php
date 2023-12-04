@@ -73,105 +73,76 @@
             padding: 10px;
             float: left;
         }
-        .sector{
-            font-size:20px;
-        }
-        .accordion{
-            font-size:20px
-        }
-        .arrow-circle {
-        display: inline-block;
-        width: 22px; /* Ajusta el tamaño del círculo según tus necesidades */
-        height: 22px;
-        border-radius: 50%;
-        background-color: white;
-        text-align: center;
-        line-height: 20px; /* Ajusta el tamaño del círculo según tus necesidades */
-        cursor: pointer;
-        align-items:center;
-        justify-content:center;
-    }
 
-    .arrow {
-        color: #7EB7B7; /* Color verde para la flecha */
-        font-size:12px;
-    }
     </style>
 </head>
 <body>
     <!-- Navbar y Cabecera -->
     @include('partials.navbar')
-    @include('partials.cab')
 
     <div class="col-md-6 mt-0 ">
         <!-- Contenedor de la imagen y el texto -->
         <div class="image-container">
-            <img src="{{ asset('img/image21.png') }}" style="margin-left: 252px;" class="image" alt="Imagen">
+            <img src="{{ asset('img/image21.png') }}" style="margin-left: 180px;" class="image" alt="Imagen">
             <!-- Texto que se superpone a la imagen -->
             <div class="text-overla" style="margin-left: 1150px; margin-top: 100px; font-size: 60px">
             <img src="{{ asset('img\image29.png') }}" alt="Icono 2" class="img-fluid" style="width: 80px;"><br>
             </div>
 
             <div class="text-overlay" style="margin-left: 600px; margin-top: 100px; font-size: 40px">
-                <a class="fas fa" style="color: #000;text-decoration: none;" href="{{ route('cifras') }}"><span>ESTADISTICAS DEL SECTOR</span></a>
+                <a class="fas fa" style="color: #000;text-decoration: none;" href="{{ route('cifras') }}"><span> ESTADISTICAS DEL SECTOR</span></a>
             </div>
         </div>
     </div>
 |<br>
-<div class="sector">
+<div class="">
         <!-- ... (código HTML anterior) ... -->
-        <div class="titu" onclick="toggleAccordion('button1')"> 
-    <div style="margin-top: 10px;">
-    &nbsp;&nbsp;ESTADISTICAS DEL SECTOR
-    <div class="arrow-circle">  
-     <span class="arrow">&#9658;</span>
-</div>
+    <div class="fas fa titu" onclick="toggleAccordion('button1')"> 
+        <div style="margin-top: 10px;">&nbsp;&nbsp;ESTADISTICAS DEL SECTOR</div>
     </div>
-        </div>
-    </div>
-    
-    <div class="accordion-button" onclick="toggleAccordion('button1')"> 
-        <div style="margin-top: 10px;">• Cifras Generales</div>
+
+    <div class="fas fa accordion-button" onclick="toggleAccordion('button1')"> 
+        <div style="margin-top: 10px;">• CIFRAS GENERALES</div>
     </div>
 
     <div class="accordion-content" id="button1">
         Información para el Botón 1. Puede ser texto, imágenes, videos, etc.
     </div>
 
-    <div class=" accordion-button" onclick="toggleAccordion('button2')"> 
-        <div style="margin-top: 10px;">• Gestion de Riesgos</div>
+    <div class="fas fa accordion-button" onclick="toggleAccordion('button2')"> 
+        <div style="margin-top: 10px;">• GESTION DE RIESGOS</div>
     </div>
 
     <div class="accordion-content" id="button2">
         Información para el Botón 2.
     </div>
 
-    <div class=" accordion-button" onclick="toggleAccordion('button3')"> 
-        <div style="margin-top: 10px;">• Resumen Ejecutivo</div>
+    <div class="fas fa accordion-button" onclick="toggleAccordion('button3')"> 
+        <div style="margin-top: 10px;">• RESUMEN EJECUTIVO</div>
     </div>
 
     <div class="accordion-content" id="button3">
         Información para el Botón 3.
     </div>
 
-    <div class=" accordion-button" onclick="toggleAccordion('button4')"> 
-        <div style="margin-top: 10px;">• Cifras de la Industria</div>
+    <div class="fas fa accordion-button" onclick="toggleAccordion('button4')"> 
+        <div style="margin-top: 10px;">• CIFRAS DE LA INDUSTRIA</div>
     </div>
 
     <div class="accordion-content" id="button4">
         Información para el Botón 4.
     </div>
 
-    <div class=" accordion-button" onclick="toggleAccordion('button5')"> 
-        <div style="margin-top: 10px;">• Visualizador inteligente de cifras</div>
+    <div class="fas fa accordion-button" onclick="toggleAccordion('button5')"> 
+        <div style="margin-top: 10px;">• VISUALIZADOR INTELIGENTE DE CIFRAS</div>
     </div>
 
     <div class="accordion-content" id="button5">
         Información para el Botón 5.
     </div>
 
-    <div class="accordion-button" onclick="toggleAccordion('button6')"> 
-        <div style="margin-top: 10px;">• Definicion de los Indicadores del Sector</div>
+    <div class="fas fa accordion-button" onclick="toggleAccordion('button6')"> 
+        <div style="margin-top: 10px;">• DEFINICION DE LOS INDICADORES DEL SECTOR</div>
     </div>
 
     <div class="accordion-content" id="button6">
@@ -212,7 +183,7 @@
     <br><br><br><br><br><br><br>
 
     <br><br> 
-    @include('footer.boletin')
+  
     <br>
     <!-- footer -->
     @include('footer.footer')

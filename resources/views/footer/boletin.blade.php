@@ -12,7 +12,9 @@
             color: white;
             padding: 20px 0;
             height: 300px;
+            margin-left: 5.5%;
             position: relative;
+            font-family: 'Open Sans', sans-serif;
         }
 
         /* Estilos para el botón Suscribirse */
@@ -64,21 +66,24 @@
     </style>
 </head>
 <body>
-<div class="boletin">
-    <a class="fas fa-newspaper newsletter-icon" href="{{ route('boletin') }}" style="margin-left:10%; font-size:40px; color: rgb(0, 0, 0); text-decoration: none;"> <b> BOLETÍN</b></a>
+    @foreach ($boletine as $boletine)
+    <div class="boletin" style="background-image: url('{{ asset($boletine->image_boletin) }}');">
+        <!-- El contenido del boletín aquí -->  
+    <a class="fas fa-newspaper newsletter-icon" href="{{ route('boletin') }}" style="margin-left:10%; font-size:40px; color: rgb(0, 0, 0); text-decoration: none;font-family: 'Open Sans', sans-serif;"> <b> {{ $boletine->titulo_boletin }}</b></a>
     <!-- Ícono de la campana -->
-    
-    <a class="fas fa-caret-right" id="subscribe-button" href="{{ route('boletin') }}"> SUSCRIBIRSE</a>
+    <a id="subscribe-button" style="font-family: 'Open Sans', sans-serif;" href="{{ route('boletin') }}"> {{ $boletine->nombreBoton_boletin }}</a>
     
     <!-- Contenido de tu pie de página aquí -->
     <div class="white-box">
     
         <!-- Contenido de tu cuadro blanco aquí -->
-        <a class="fas fa-bell" id="campana"></a>
-        <b><a class="fas fa" style="color:RGB(0 130 130);text-decoration: none;" href="{{ route('boletin') }}"> <span> ¿Desea recibir informacion de <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Analitica Solidaria  en su correo?</span></a></b>
-        <a class="fas fa"  style="color:RGB(0 130 130);text-decoration: none;font-size:50px;" id="custom-icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2024</a>
+        <img src="{{ asset($boletine->icono_boletin) }}" alt="{{ $boletine->titulo_boletin }}" class="img-fluid" style="height: 50px;margin-top:2px; " id="campana"></a>
+        <b><a class="fas fa" style="color:RGB(0 130 130);text-decoration: none;font-family: 'Open Sans', sans-serif;" href="{{ route('boletin') }}"> <span>{{ $boletine->texto_boletin }}</span></a></b>
+        <a class="fas fa"  style="color:RGB(0 130 130);text-decoration: none;font-size:50px;font-family: 'Open Sans', sans-serif;" id="custom-icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ $boletine->año_boletin }}</a>
     </div>
-</div>
+    </div>
+    @endforeach
+
 
 </body>
 </html>

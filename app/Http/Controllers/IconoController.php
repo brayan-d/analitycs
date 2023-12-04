@@ -35,7 +35,7 @@ class IconoController extends Controller
     public function mostrarIcono()
 {
     $icono = Icono::all(); // Obtén todos los productos desde la base de datos
-    return view('ADMIN.ver-iconos', ['icono' => $icono]);
+    return view('ADMIN./viewss.iconos', ['icono' => $icono]);
 }
 
 public function editarIcono($id)
@@ -63,7 +63,7 @@ public function actualizarIcono(Request $request, $id)
     $icono->save();
 
     // Redirige de nuevo a la lista de productos con un mensaje de éxito.
-    return redirect()->route('admin.ver-iconos')->with('success', 'Icono actualizado con éxito');
+    return redirect()->route('iconos')->with('success', 'Icono actualizado con éxito');
 }
 
 // Controlador que carga la vista index
@@ -80,9 +80,9 @@ public function eliminarIcono($id)
         $icono = Icono::find($id);
         $icono->delete();
 
-        return redirect()->route('admin.ver-iconos')->with('success', 'Icono eliminado con éxito');
+        return redirect()->route('iconos')->with('success', 'Icono eliminado con éxito');
     } catch (\Exception $e) {
-        return redirect()->route('admin.ver-iconos')->with('error', 'No se puede eliminar el icono debido a restricciones de clave externa.');
+        return redirect()->route('iconos')->with('error', 'No se puede eliminar el icono debido a restricciones de clave externa.');
     }
 }
 

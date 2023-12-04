@@ -33,7 +33,6 @@
     </div>
 
 <br>
-    @include('footer.boletin')
     <br>
     @include('footer.footer')
 </body>

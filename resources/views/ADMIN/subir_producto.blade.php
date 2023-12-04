@@ -17,7 +17,7 @@
         <form method="POST" action="{{ route('admin.guardar-producto') }}" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
-                <label for="name">Nombre del producto:</label>
+                <label for="name">Nombre del informe:</label>
                 <input type="text" name="name" class="form-control" required>
             </div>
             <div class="form-group">
@@ -25,12 +25,19 @@
                 <textarea name="description" class="form-control" required></textarea>
             </div>
             <div class="form-group">
-                <label for="contenido">CONTENIDO OCULTO</label>
-                <input type="text" name="contenido" class="form-control" required>
+                <label for="contenido">CONTENIDO OCULTO</label><br>
+                <h6 class="fas fa">IFRAME QUE SE DESBLOQUEA AL PAGAR </h6>
+                <textarea type="text" name="contenido" class="form-control" required></textarea>
             </div>
             <div class="form-group">
-                <label for="price">Precio:</label>
-                <input type="number" name="price" class="form-control" required>
+                <label for="minPrice">Precio bajo COP:</label><br>
+                <h6 class="fas fa">SIN PUNTOS NI COMAS </h6>
+                <input type="number" name="minPrice" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="maxPrice">Precio alto COP:</label><br>
+                <h6 class="fas fa">SIN PUNTOS NI COMAS </h6>
+                <input type="number" name="maxPrice" class="form-control" required>
             </div>
             <div class="form-group">
                 <label for="image">Imagen:</label>
@@ -41,7 +48,6 @@
     </div>
     <br>
     <br>
-    @include('footer.boletin')
     <br>
     @include('footer.footer')
 </body>

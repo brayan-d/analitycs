@@ -9,7 +9,7 @@
 <body>
     @include('partials.navbar')
     @include('partials.navHori')
-
+    @extends('app')
     <div class="container mt-4">
         <br>
         <br>
@@ -20,21 +20,21 @@
                 <label for="titulo_noticia">Titulo:</label>
                 <input type="text" name="titulo_noticia" class="form-control" required>
             </div>
-            <h6 class="fas fa">Este texto aparecera en el carrusel principal </h6>
             <div class="form-group">
-                <label for="texto_corto">Texto corto:</label>
-                <input type="text" name="texto_corto" class="form-control" required>
+                <label for="texto_corto">Descripción corta:</label>
+                <textarea class="ckeditor" type="text" name="texto_corto" class="form-control" required></textarea>
             </div>
-            <h6 class="fas fa">Este texto aparecera en el blog de noticias, en ver la noticia completa </h6>
+            <h6 class="fas fa">Este texto aparecera en leer más </h6>
             <div class="form-group">
-                <label for="texto_largo">Texto completo:</label>
-                <input type="text" name="texto_largo" class="form-control" required>
+                <label for="texto_largo">Noticia completa:</label>
+                <textarea class="ckeditor" type="text" name="texto_largo" class="form-control" required></textarea>
             </div>
             <div class="form-group">
                 <label for="fecha_noticia">Fecha:</label>
                 <input type="date" name="fecha_noticia" required>
             </div>
             <div class="form-group">
+                <h6 class="fas fa">350 x 200 (Ancho x Alto) </h6>
                 <label for="image">Imagen:</label>
                 <input type="file" name="image" class="form-control-file" accept="image/*" required>
             </div>
@@ -43,8 +43,9 @@
     </div>
     <br>
     <br>
-    @include('footer.boletin')
     <br>
+  
+
     @include('footer.footer')
 </body>
 </html>
