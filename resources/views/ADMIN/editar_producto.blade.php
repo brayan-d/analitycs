@@ -30,8 +30,12 @@
                 <textarea name="description" class="form-control" required>{{ $producto->description }}</textarea>
             </div>
             <div class="form-group">
-                <label for="price">Precio:</label>
-                <input type="number" name="price" class="form-control" value="{{ $producto->price }}" required>
+                <label for="minPrice">Precio bajo:</label>
+                <input type="number" name="minPrice" class="form-control" value="{{ $producto->minPrice }}" required>
+            </div>
+            <div class="form-group">
+                <label for="maxPrice">Precio alto:</label>
+                <input type="number" name="maxPrice" class="form-control" value="{{ $producto->maxPrice }}" required>
             </div>
             <div class="form-group">
                 <label for="contenido">Contenido oculto:</label>
@@ -53,7 +57,6 @@
         </form>
     </div>
 <br>
-    @include('footer.boletin')
     <br>
     @include('footer.footer')
 </body>

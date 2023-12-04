@@ -11,9 +11,10 @@
 <body>
 
 @include('partials.navbar')
-@include('partials.cab')
+{{-- @include('partials.cab') --}}
 <!--  -->
-
+<br>
+<br>
 <!--  -->
     <div class="container" style="margin-top: 30px">
         <div class="col-lg-7">
@@ -115,7 +116,6 @@
         <br><br>
     </div>
 <br><br>
-    @include('footer.boletin')
     <br>
     @include('footer.footer')
 

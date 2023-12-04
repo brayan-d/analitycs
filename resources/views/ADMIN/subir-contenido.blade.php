@@ -22,7 +22,7 @@
             </div>
             <div class="form-group">
                 <label for="texto_contenido">Texto:</label>
-                <input type="text" name="texto_contenido" class="form-control" required>
+                <textarea type="text" name="texto_contenido" class="form-control" required></textarea>
             </div>
             <div class="form-group">
                 <label for="name_boton">Nombre del botón:</label>
@@ -30,6 +30,7 @@
             </div>
             <div class="form-group">
                 <label for="image">Imagen:</label>
+                <h6 class="fas fa">500 x 500 (Ancho x Alto) </h6>
                 <input type="file" name="image" class="form-control-file" accept="image/*" required>
             </div>
             <button type="submit" class="btn btn-primary">Subir contenido</button>
@@ -37,7 +38,6 @@
     </div>
     <br>
     <br>
-    @include('footer.boletin')
     <br>
     @include('footer.footer')
 </body>

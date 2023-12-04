@@ -7,8 +7,13 @@ use App\Models\Pedido;
 use App\Models\Detalle;
 use App\Models\Product;
 use Cart as CarPackage;
+use App\Models\Marquesina;
 use Illuminate\Http\Request;
+use App\Mail\ConfirmacionCompra;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+
+
 
 class CartController extends Controller
 {
@@ -37,7 +42,11 @@ class CartController extends Controller
 public function shop()
 {
     $products = Product::all();
-    
+    $Marquesina = Marquesina::all();
+    $constantAssets = 2000000;
+    $user = Auth::user();
+    $rates = [];
+
     // Crea un array para rastrear si el usuario ha comprado cada producto
     $hasPurchased = [];
 
@@ -49,6 +58,7 @@ public function shop()
             // Comprueba si existe una compra asociada al usuario y al producto
             $hasPurchased[$product->id] = $user->compras->contains('product_id', $product->id);
         }
+        
     } else {
         // Si el usuario no ha iniciado sesión, establece todos los productos como no comprados
         foreach ($products as $product) {
@@ -56,7 +66,10 @@ public function shop()
         }
     }
 
-    return view('shop', ['title' => 'E-COMMERCE STORE | SHOP', 'products' => $products, 'hasPurchased' => $hasPurchased]);
+    $marquesinaController = new MarquesinaController();
+    $rates = $marquesinaController->index()->getData()['rates'];
+
+    return view('shop', ['title' => 'E-COMMERCE STORE | SHOP', 'products' => $products, 'hasPurchased' => $hasPurchased, 'Marquesina' => $Marquesina,'constantAssets' => $constantAssets,'user' => $user, 'rates' => $rates,]);
 }
 
 
@@ -90,7 +103,6 @@ public function shop()
     }
     
 
-   
     public function update(Request $request)
     {
         $validatedData = $request->validate([
@@ -171,7 +183,38 @@ public function shop()
     }
     
 
-    public function success()
+//     public function success()
+// {
+//     $user_id = Auth::user()->id;
+//     $pedido = new Pedido();
+//     $pedido->codigo = uniqid();
+//     $pedido->total = CarPackage::getSubtotal();
+//     $pedido->user_id = $user_id;
+//     $pedido->save();
+
+//     foreach (CarPackage::getContent() as $item):
+//         $detalle = new Detalle();
+//         $detalle->cantidad = $item->quantity;
+//         $detalle->producto = $item->name;
+//         $detalle->precio = $item->price;
+//         $detalle->pedido_id = $pedido->id;
+//         $detalle->save();
+        
+//         // Después de completar el pago, registra la compra en Compra
+//         Compra::create([
+//             'user_id' => $user_id,
+//             'product_id' => $item->id,
+//             'purchased' => true,
+//         ]);
+//     endforeach;
+//     $userEmail = Auth::user()->email;
+//     Mail::to($userEmail)->send(new ConfirmacionCompra($pedido));
+
+//     CarPackage::clear();
+
+//     return view('front.confirmacion')->with(['pedido' => $pedido->codigo, 'total' => $pedido->total]);
+// }
+public function success()
 {
     $user_id = Auth::user()->id;
     $pedido = new Pedido();
@@ -188,17 +231,35 @@ public function shop()
         $detalle->pedido_id = $pedido->id;
         $detalle->save();
         
-        // Después de completar el pago, registra la compra en Compra
-        Compra::create([
-            'user_id' => $user_id,
-            'product_id' => $item->id,
-            'purchased' => true,
-        ]);
+        // Si el producto especial (ID 999) se encuentra en el carrito, desbloquear todos los informes
+        if ($item->id == 999) {
+            $user = Auth::user();
+            $informes = Product::all(); // Obtén todos los informes
+            foreach ($informes as $informe) {
+                // Registra cada informe como comprado para el usuario actual
+                Compra::create([
+                    'user_id' => $user_id,
+                    'product_id' => $informe->id,
+                    'purchased' => true,
+                ]);
+            }
+        } else {
+            // Para otros productos, registra la compra normalmente
+            Compra::create([
+                'user_id' => $user_id,
+                'product_id' => $item->id,
+                'purchased' => true,
+            ]);
+        }
     endforeach;
+    $userEmail = Auth::user()->email;
+    Mail::to($userEmail)->send(new ConfirmacionCompra($pedido));
+
     CarPackage::clear();
 
-    return view('front.confirmacion')->with(['pedido' => $pedido->codigo]);
+    return view('front.confirmacion')->with(['pedido' => $pedido->codigo, 'total' => $pedido->total]);
 }
+
 
 
     public function checkIfUserHasPurchasedProduct($productId) {
@@ -216,6 +277,33 @@ public function shop()
         
         return false; // Si el usuario no ha iniciado sesión, asumimos que no ha comprado el producto.
     }
+    // public function checkIfUserHasPurchasedProduct($productId) {
+    //     // Verifica si el usuario ha iniciado sesión
+    //     if (auth()->check()) {
+    //         $user = auth()->user();
+    
+    //         // Obtiene el producto por su ID
+    //         $product = Product::find($productId);
+    
+    //         // Verifica si el usuario ha comprado el producto o si el precio es igual a 0
+    //         $hasPurchased = $user->Compra()->where('product_id', $productId)->exists() || $product->price == 0 ;
+    
+    //         return $hasPurchased;
+    //     }else if(auth()->check()) {
+    //         $user = auth()->user();
+    
+    //         // Obtiene el producto por su ID
+    //         $product = Product::find($productId);
+
+    //         $hasPurchased = $product->price == 0 ;
+
+    //         return $hasPurchased;
+
+    //     }
+    
+    //     return false; // Si el usuario no ha iniciado sesión, asumimos que no ha comprado el producto.
+    // }
+    
     // En el controlador después de completar la compra
 public function purchaseProduct($productId) {
     // Lógica para procesar la compra y guardar los detalles
@@ -237,5 +325,12 @@ public function misCompras()
     }
 }
 
-    
+public function mostrarInforme($id)
+{
+    $product = Product::find($id); // Suponiendo que tengas un modelo llamado Noticia
+
+    return view('verinforme', compact('product'));
+}
+
+
 }

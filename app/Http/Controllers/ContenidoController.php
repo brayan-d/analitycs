@@ -36,7 +36,7 @@ class ContenidoController extends Controller
     public function mostrarContenido()
 {
     $contenido = Contenido::all(); // Obtén todos los productos desde la base de datos
-    return view('ADMIN.ver-contenido', ['contenido' => $contenido]);
+    return view('ADMIN/viewss.contenido', ['contenido' => $contenido]);
 }
 
 public function editarContenido($id)
@@ -66,7 +66,7 @@ public function actualizarContenido(Request $request, $id)
     $contenido->save();
 
     // Redirige de nuevo a la lista de productos con un mensaje de éxito.
-    return redirect()->route('admin.ver-contenido')->with('success', 'contenido actualizado con éxito');
+    return redirect()->route('contenido')->with('success', 'contenido actualizado con éxito');
 }
 
 // Controlador que carga la vista index
@@ -83,9 +83,9 @@ public function eliminarContenido($id)
         $contenido = Contenido::find($id);
         $contenido->delete();
 
-        return redirect()->route('admin.ver-contenido')->with('success', 'contenido eliminado con éxito');
+        return redirect()->route('contenido')->with('success', 'contenido eliminado con éxito');
     } catch (\Exception $e) {
-        return redirect()->route('admin.ver-contenido')->with('error', 'No se puede eliminar el contenido debido a restricciones de clave externa.');
+        return redirect()->route('contenido')->with('error', 'No se puede eliminar el contenido debido a restricciones de clave externa.');
     }
 }
 

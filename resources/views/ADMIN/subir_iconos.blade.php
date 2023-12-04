@@ -21,6 +21,7 @@
                 <input type="text" name="name_icono" class="form-control" required>
             </div>
             <div class="form-group">
+                <h6 class="fas fa">300px (Ancho x Alto) </h6>
                 <label for="image">Imagen:</label>
                 <input type="file" name="image" class="form-control-file" accept="image/*" required>
             </div>
@@ -29,7 +30,6 @@
     </div>
     <br>
     <br>
-    @include('footer.boletin')
     <br>
     @include('footer.footer')
 </body>

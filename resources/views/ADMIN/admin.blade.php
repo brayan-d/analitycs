@@ -25,11 +25,11 @@
 <br>
 <!-- ver USUARIOS -->
 <div class="fas fa" style="margin-left: 200px;">
-    <a href="{{ route('admin.ver-usuarios') }}" class="btn btn-primary">Ver usuarios</a>
+    <a href="{{ route('users') }}" class="btn btn-primary">Ver usuarios</a>
 </div>
 <!-- ver pedidos -->
 <div class="fas fa" style="margin-left: 200px;">
-    <a href="{{ route('admin.pedidos-y-detalles') }}" class="btn btn-primary">Ver compras</a>
+    <a href="{{ route('compras') }}" class="btn btn-primary">Ver compras</a>
 </div>
 <br>
 <br>
@@ -40,7 +40,7 @@
 
 <!-- ver productos -->
 <div class="fas fa" style="margin-left: 100px;">
-    <a href="{{ route('admin.ver-productos') }}" class="btn btn-primary">Ver informes</a>
+    <a href="{{ route('informe') }}" class="btn btn-primary">Ver informes</a>
 </div>
 <br>
 <br>
@@ -50,7 +50,7 @@
 </div>
 <!-- ver ICONOS DEL HOME -->
 <div class="fas fa" style="margin-left: 145px;">
-    <a href="{{ route('admin.ver-iconos') }}" class="btn btn-primary">Ver iconos home</a>
+    <a href="{{ route('iconos') }}" class="btn btn-primary">Ver iconos home</a>
 </div>
 <br>
 <br>
@@ -60,7 +60,7 @@
 </div>
 <!-- ver contenido DEL HOME -->
 <div class="fas fa" style="margin-left: 110px;">
-    <a href="{{ route('admin.ver-contenido') }}" class="btn btn-primary">Ver contenido home</a>
+    <a href="{{ route('contenido') }}" class="btn btn-primary">Ver contenido home</a>
 </div>
 <br>
 <br>
@@ -70,14 +70,43 @@
 </div>
 <!-- ver noticias DEL HOME -->
 <div class="fas fa" style="margin-left: 178px;">
-    <a href="{{ route('admin.ver-noticia') }}" class="btn btn-primary">Ver noticias home</a>
+    <a href="{{ route('blogg') }}" class="btn btn-primary">Ver noticias home</a>
+</div>
+<br>
+<br>
+<!-- FORMULARIO noticias DEL HOME -->
+<div class="fas fa" style="margin-left: 200px;">
+    <a href="{{ route('admin.subir-carrusel') }}" class="btn btn-primary">Subir al carrusel</a>
+</div>
+<!-- ver noticias DEL HOME -->
+<div class="fas fa" style="margin-left: 160px;">
+    <a href="{{ route('carrusel') }}" class="btn btn-primary">Ver carrusel home</a>
+</div>
+<br>
+<br>
+<!-- FORMULARIO marquesina -->
+<div class="fas fa" style="margin-left: 200px;">
+    <a href="{{ route('admin.subir-marquesina') }}" class="btn btn-primary">Subir a la marquesina</a>
+</div>
+<!-- ver marquesina -->
+<div class="fas fa" style="margin-left: 160px;">
+    <a href="{{ route('marquesina') }}" class="btn btn-primary">Ver marquesina</a>
+</div>
+<br>
+<br>
+<!-- FORMULARIO marquesina -->
+<div class="fas fa" style="margin-left: 200px;">
+    <a href="{{ route('admin.subir-cliente') }}" class="btn btn-primary">Subir empresa</a>
+</div>
+<!-- ver marquesina -->
+<div class="fas fa" style="margin-left: 160px;">
+    <a href="{{ route('cliente') }}" class="btn btn-primary">Ver empresas</a>
 </div>
 <br>
 <br>
 <!-- FOOTER -->
 <br>
 <br>
-@include('footer.boletin')
 <br>
 @include('footer.footer')
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>

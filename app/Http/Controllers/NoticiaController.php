@@ -31,13 +31,13 @@ class NoticiaController extends Controller
     
         $noticia->save();
     
-        return redirect('index')->with('success', 'contenido subido con éxito');
+        return redirect('blogg')->with('success', 'contenido subido con éxito');
     }
     
     public function mostrarNoticia()
 {
     $noticia = Noticia::all(); // Obtén todos los productos desde la base de datos
-    return view('ADMIN.ver-noticia', ['noticia' => $noticia]);
+    return view('ADMIN/viewss.blogg', ['noticia' => $noticia]);
 }
 
 public function editarNoticia($id)
@@ -69,7 +69,7 @@ public function actualizarNoticia(Request $request, $id)
     $noticia->save();
 
     // Redirige de nuevo a la lista de productos con un mensaje de éxito.
-    return redirect()->route('admin.ver-noticia')->with('success', 'noticia actualizada con éxito');
+    return redirect()->route('blogg')->with('success', 'noticia actualizada con éxito');
 }
 
 public function eliminarNoticia($id)
@@ -79,10 +79,17 @@ public function eliminarNoticia($id)
         $noticia = Noticia::find($id);
         $noticia->delete();
 
-        return redirect()->route('admin.ver-noticia')->with('success', 'noticia eliminada con éxito');
+        return redirect()->route('blogg')->with('success', 'noticia eliminada con éxito');
     } catch (\Exception $e) {
-        return redirect()->route('admin.ver-noticia')->with('error', 'No se puede eliminar la noticia debido a restricciones de clave externa.');
+        return redirect()->route('blogg')->with('error', 'No se puede eliminar la noticia debido a restricciones de clave externa.');
     }
+}
+
+public function mostrarBlog($id)
+{
+    $noticia = Noticia::find($id); // Suponiendo que tengas un modelo llamado Noticia
+
+    return view('leermas', compact('noticia'));
 }
 
 }

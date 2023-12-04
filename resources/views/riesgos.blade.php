@@ -45,40 +45,35 @@
 <body>
     <!-- Navbar y Cabecera -->
     @include('partials.navbar')
-    @include('partials.cab')
 
-    <div class="col-md-6 mt-0 ">
+<div class="container mt-5">   
+        <div class="col-md-6 mt-0 ">
         <!-- Contenedor de la imagen y el texto -->
         <div class="image-container">
-            <img src="{{ asset('img/image22.png') }}" style="margin-left: 180px;" class="image" alt="Imagen">
+            <img src="{{ asset('img/image22.png') }}" style="" class="image" alt="Imagen">
             <!-- Texto que se superpone a la imagen -->
-            <div class="text-overla" style="margin-left: 1180px; margin-top: 100px; font-size: 60px">
+            <div class="text-overla" style="margin-left: 1080px; margin-top: 100px; font-size: 60px">
             <img src="{{ asset('img\image28.png') }}" alt="Icono 2" class="img-fluid" style="width: 80px;"><br>
             </div>
 
-            <div class="text-overlay" style="margin-left: 650px; margin-top: 100px; font-size: 50px">
+            <div class="text-overlay" style="margin-left: 450px; margin-top: 100px; font-size: 50px">
                 <a class="fas fa" style="color: #000;text-decoration: none;" href="{{ route('cifras') }}"><span> GESTION DE RIESGOS</span></a>
             </div>
         </div>
     </div>
-<br>
-<br>
-<!-- Texto a la izquierda y botón a la derecha con espacio -->
-<div style="display: flex; justify-content: space-between; align-items: center; margin-left: 180px; margin-right: 100px;">
-    <div style="flex: 1; margin-right: 10px;"> <!-- Añade margen derecho al texto -->
-        <p class="fas fa">¡Mantente alerta! Detecta a tiempo todos los riesgos de lavado de dinero que puedan afectar a tu empresa.<br> 
-            Podras evaluar constantemente a tus clientes y contrapartes para prevenir cualquier riesgo relacionado <br>con el lavado de capitales, 
-            la evasion fiscal o el fraude.</p>
-    </div>
-    <div>
-        <a href="#" id="boton" class="fas fa btn btn-primary" style="margin-left: 10px;"> RIESGOS</a> <!-- Añade margen izquierdo al botón -->
+</div>
+<div class="container mt-5">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-left: 180px; margin-right: 100px;">
+        <div style="flex: 1; margin-right: 10px;"> <!-- Añade margen derecho al texto -->
+            <p class="fas fa">¡Mantente alerta! Detecta a tiempo todos los riesgos de lavado de dinero que puedan afectar a tu empresa.<br> 
+                Podras evaluar constantemente a tus clientes y contrapartes para prevenir cualquier riesgo relacionado <br>con el lavado de capitales, 
+                la evasion fiscal o el fraude.</p>
+        </div>
+        <div>
+            <a href="#" id="boton" class="fas fa btn btn-primary" style="margin-left: 10px;"> RIESGOS</a> <!-- Añade margen izquierdo al botón -->
+        </div>
     </div>
 </div>
-<br>
-<br>
-    <!-- boletin -->
-    @include('footer.boletin')
-<br>
     <!-- footer -->
     @include('footer.footer')
 </body>

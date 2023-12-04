@@ -4,57 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" rel="stylesheet">
+    <title>Marquesina de Indicadores</title>
     <style>
-        /* Estilo para alinear a la derecha y dividir en 5 espacios iguales */
-        .container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: flex-end; /* Alinea todo a la derecha */
-        }
-
-        .breadcrumb-item {
-            flex: 1;
-            text-align: right; /* Alinea el texto a la derecha */
-            white-space: nowrap; /* Evita que el texto se divida en varias líneas */
-        }
-
-        /* Añade estilo adicional para resaltar el contenido */
-        .breadcrumb-item b {
-            font-size: 13px;
+        .marquesina{
+            /* background-color: rgb(197, 189, 189); */
+            background-color: RGB(220 162 17); 
+            margin-left: 270px;
+            width: 1500px;
+            color: black;
+            font-family: 'Open Sans', sans-serif;
             font-weight: bold;
+            border-radius: 15px;
         }
-        /* Estilo para hacer que la letra sea roja */
-        .breadcrumb-item span.red-text {
-            color: red;
-        }
-        .breadcrumb{
-            width: 1466px;
-            height: 25px;
-            display: flex;
-            justify-content: center;
-            align-content: space-around;
-            border-radius: 5px;
-        }
-        b{
-            color: #2175aa;
+        #separador{
+            color: RGB(0 130 130) ;
         }
     </style>
 </head>
 <body>
-<div class="container" style="margin-top: 40px; margin-left: 365px;">
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><b>DOLAR +4.0 <span class="red-text">(+0.04%)</span></b></li>
-            <li class="breadcrumb-item"><b>PETROLEO 88.50 +8.5 <span class="red-text">(+0.08%)</span></b></li>
-            <li class="breadcrumb-item"><b>EURO 4.55 +3.5<span class="red-text"> (+0.03%)</span></b></li>
-            <li class="breadcrumb-item"><b>ORO 99.50 +9.5 <span class="red-text">(+0.95%)</span></b></li>
-            <li class="breadcrumb-item"><b>STP 3.50 +3.5 <span class="red-text">(+0.08%)</span></b></li>
-        </ol>
-    </nav>
+    <br>
+<br>
+<div class="marquesina">
+    <marquee behavior="scroll" direction="left" style="width: 100%;"> <!-- Ajusta el ancho según tus necesidades -->
+        @foreach ($Marquesina as $dato)
+            <span style="display: inline-block; margin-right: 20px;">{{ $dato->datoIndicador }} + {{ $dato->valor }}<a id="separador">&nbsp;&nbsp;&nbsp;&nbsp;|</a></span>
+            <!-- Ajusta el margen y estilos según sea necesario -->
+        @endforeach
+    </marquee>
 </div>
 
-
-
+</div>
 </body>
 </html>

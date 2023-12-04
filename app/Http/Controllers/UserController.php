@@ -9,10 +9,20 @@ use App\Http\Controllers\Controller;
 class UserController extends Controller
 {
     //
-    public function verUsuarios()
+
+public function verUsuarios(Request $request)
 {
-    $usuarios = User::all(); // Obtén todos los usuarios desde la base de datos
-    return view('ADMIN.ver_usuarios', ['usuarios' => $usuarios]);
+    $search = $request->input('search');
+
+    // Obtén todos los usuarios o filtra por nombre, correo o rol si se proporciona un término de búsqueda
+    $usuarios = $search
+        ? User::where('name', 'like', '%' . $search . '%')
+               ->orWhere('email', 'like', '%' . $search . '%')
+               ->orWhere('role', 'like', '%' . $search . '%')
+               ->get()
+        : User::all();
+
+    return view('ADMIN/viewss.users', ['usuarios' => $usuarios]);
 }
 
 public function editarUsuario($id)
@@ -27,7 +37,7 @@ public function actualizarUsuario(Request $request, $id)
     $usuario->role = $request->input('role');
     $usuario->save();
 
-    return redirect()->route('admin.ver-usuarios')->with('success', 'Rol de usuario actualizado con éxito');
+    return redirect()->route('users')->with('success', 'Rol de usuario actualizado con éxito');
 }
 
 

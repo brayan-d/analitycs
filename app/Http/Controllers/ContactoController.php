@@ -25,6 +25,16 @@ class ContactoController extends Controller
         return redirect()->route('contacto')->with('success', 'Formulario enviado correctamente');
     }
 
+    public function mostrarContacto(Request $request)
+{
+    $fechaBusqueda = $request->input('fecha_busqueda');
+
+    // Obtén todos los contactos o filtra por fecha si se proporciona una fecha de búsqueda
+    $contacto = $fechaBusqueda ? Contacto::whereDate('created_at', $fechaBusqueda)->get() : Contacto::all();
+
+    return view('ADMIN/viewss.contact', ['contacto' => $contacto]);
+}
+
     /**
      * Display a listing of the resource.
      */

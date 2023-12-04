@@ -9,6 +9,7 @@
 <body>
     @include('partials.navbar')
     @include('partials.navHori')
+    @extends('app')
 
     <br>
     <br>
@@ -28,12 +29,12 @@
             <h6 class="fas fa">Este texto aparecera en el carrusel principal </h6>
             <div class="form-group">
                 <label for="texto_corto">Texto corto:</label>
-                <input type="text" name="texto_corto" class="form-control" value="{{ $noticia->texto_corto }}" required>
+                <textarea class="ckeditor" type="text" name="texto_corto" class="form-control" value="{{ $noticia->texto_corto }}" required></textarea>
             </div>
             <h6 class="fas fa">Este texto aparecera en el blog de noticias, en ver la noticia completa </h6>
             <div class="form-group">
                 <label for="texto_largo">Texto completo:</label>
-                <input type="text" name="texto_largo" class="form-control" value="{{ $noticia->texto_largo }}" required>
+                <textarea class="ckeditor" type="text" name="texto_largo" class="form-control" value="{{ $noticia->texto_largo }}" required></textarea>
             </div>
             <div class="form-group">
                 <label for="fecha_noticia">Fecha:</label>
@@ -44,6 +45,7 @@
                 <img src="{{ asset($noticia->image_noticia) }}" alt="{{ $noticia->titulo_noticia }}" width="150">
             </div>
             <div class="form-group">
+                <h6 class="fas fa">350 x 200 (Ancho x Alto) </h6>
                 <label for="new_image">Nueva imagen:</label>
                 <input type="file" name="new_image" class="form-control-file">
             </div>
@@ -55,7 +57,6 @@
         </form>
     </div>
     <br>
-    @include('footer.boletin')
     <br>
     @include('footer.footer')
 </body>

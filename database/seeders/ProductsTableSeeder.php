@@ -14,11 +14,13 @@ class ProductsTableSeeder extends Seeder
     public function run()
     {
         Product::create([
-            'name' => 'Prueba',
-            'price' => 900000,
-            'description' => 'prueba1',
-            'contenido'=> 'desbloqueado',
-            'image_path' => '1698260025_WhatsApp Image 2023-08-11 at 9.52.10 AM.jpeg'
+            'id' => 999,
+            'name' => 'Acceso a todos los informes',
+            'minPrice' => 100000,
+            'maxPrice' => 200000,
+            'description' => 'Compra TODOS los informes',
+            'contenido'=> 'Tienes acceso a todos los informes',
+            'image_path' => ''
         ]);
 
         
