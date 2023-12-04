@@ -26,7 +26,7 @@
         @foreach ($noticias as $key => $noticia)
             <div class="col-md-4">
                 <div class="card mb-3 @if(count($noticias) < 4) fixed-width-card @endif" style="border-radius: 30px;">
-                    <img src="{{ asset($noticia->image_noticia) }}" class="card-img-top" alt="..." style="height: 200px; width: 100%; border-top-left-radius: 30px; border-top-right-radius: 30px; border-bottom-left-radius: 0; border-bottom-right-radius: 0;">
+                    <img src="{{ asset($noticia->image_noticia) }}" class="card-img-top" alt="..." style="height: 200px; width: 100%; border-top-left-radius: 30px; border-top-right-radius: 30px; border-bottom-left-radius: 0; border-bottom-right-radius: 0; object-fit: cover;">
                     <div class="card-body d-flex flex-column" style="height: 100%;">
                         <h5 class="card-title">{{ $noticia->titulo_noticia }}</h5>
                         <p class="card-text p44" style="max-height: 80px; overflow: hidden; text-overflow: ellipsis;">{!! $noticia->texto_corto !!}</p>
